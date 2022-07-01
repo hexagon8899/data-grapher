@@ -7,8 +7,6 @@ def randomnum():
 
 g=Grapher(
     randomnum,
-    hackermode=True,
-    save=True,
     displaymessage = {
     60: 'this is a label',
     61: 'this is another label',
@@ -16,7 +14,7 @@ g=Grapher(
     66: '|-|                                               |-|',
     67: '|-|   T H I S   I S   A   L A R G E   L A B E L   |-|',
     68: '|-|                                               |-|',
-    69: '\\-/-----------------------------------------------\\-/'
-    })
+    69: '\\-/-----------------------------------------------\\-/',
+    },
+    textcolour='#ffffff')
 g.start()
-Grapher()
