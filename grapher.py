@@ -10,14 +10,15 @@ windll.shcore.SetProcessDpiAwareness(1)
 
 
 class Grapher(Tk):
-    def __init__(self, func, interval=200, width=40, height=100, displaymessage = {}, save = False, hackermode = False):
+    def __init__(self, func, interval=200, width=40, height=100, displaymessage = {}, save = False, bgcolour = 'black', textcolour = 'lightgreen'):
         '''
 func: the function to get the data from, should return float
 interval: delay between function calls (ms).
 width: width of the graph
 height: how many lines of the graph are shown
 save: set this to true if you want to save the graph after it is run
-hackermode: makes you look like a movie hacker'''
+bgcolour: the colour of the background
+textcolour: the colour of the text'''
 
         super().__init__()
         
@@ -34,15 +35,18 @@ hackermode: makes you look like a movie hacker'''
         self.func, self.interval, self.width, self.height = func, interval, width, height
         #to save memory, dont save all the recorded data when not saving to file 
         if save:
-            self.savebutton = ttk.Button(self.frame, text='save', command=self.savetofile)
+            self.savebutton = ttk.Button(self.frame, text='save data', command=self.savetofile)
             self.saveData = []
             self.savebutton.grid(row=1)
+            
         #text field for the grapher
         self.graphed = st.ScrolledText(self.frame, width=189, height=50)
-        self.graphed.configure(bg='black', foreground=('lightgreen' if hackermode else 'white'))
+        self.graphed.configure(bg='black', foreground=('lightgreen'), borderwidth=0)
         self.graphed.grid(row=0)
         self.graphed.insert(1.0,self.all_lines(self.l))
         self.graphed.see(END)
+        
+        self.colourIn = Entry(self.frame)
         self.graph()
         self.attributes('-fullscreen', True)
     
@@ -68,6 +72,8 @@ hackermode: makes you look like a movie hacker'''
         f.write(s)
 
     def start(self):
+        '''
+start the grapher'''
         self.mainloop()
     
     def all_lines(self, l):

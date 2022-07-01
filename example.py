@@ -11,6 +11,12 @@ g=Grapher(
     save=True,
     displaymessage = {
     60: 'this is a label',
-    61: 'this is another label'
+    61: 'this is another label',
+    65: '/-\\-----------------------------------------------/-\\',
+    66: '|-|                                               |-|',
+    67: '|-|   T H I S   I S   A   L A R G E   L A B E L   |-|',
+    68: '|-|                                               |-|',
+    69: '\\-/-----------------------------------------------\\-/'
     })
 g.start()
+Grapher()
